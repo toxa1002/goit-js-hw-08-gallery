@@ -77,9 +77,9 @@ const imgOnBackDrop = document.querySelector(".lightbox__image");
 
 const divBackDrop = document.querySelector(".lightbox__overlay");
 
-const marcupHTML = createMarcupGallery(galleryItems);
+const markupHTML = createMarkupGallery(galleryItems);
 
-listGaleryItemsEl.insertAdjacentHTML("beforeend", marcupHTML);
+listGaleryItemsEl.insertAdjacentHTML("beforeend", markupHTML);
 
 listGaleryItemsEl.addEventListener("click", onGalleryListClick);
 
@@ -90,7 +90,7 @@ window.addEventListener("keydown", closeModalOnPressEsc);
 divBackDrop.addEventListener("click", onCloseModalW);
 
 // разметка
-function createMarcupGallery(params) {
+function createMarkupGallery(params) {
   return params
     .map(({ preview, original, description }, inx) => {
       return ` <li li class="gallery__item" >
@@ -146,14 +146,14 @@ function closeModalOnPressEsc(evt) {
 
 function slider(key, index) {
   if (key.key === "ArrowRight") {
-    if (index === galleryData.length-1) {
+    if (index === galleryItems.length-1) {
       return;
     } else {
       currentIndex += 1;
 
-      imgOnBackDrop.src = galleryData[currentIndex].original;
+      imgOnBackDrop.src = galleryItems[currentIndex].original;
 
-      imgOnBackDrop.alt = galleryData[currentIndex].description;
+      imgOnBackDrop.alt = galleryItems[currentIndex].description;
     }
   } else if (key.key === "ArrowLeft") {
     if (index === 0) {
@@ -161,8 +161,8 @@ function slider(key, index) {
     } else {
       currentIndex = index - 1;
       
-      imgOnBackDrop.src = galleryData[currentIndex].original;
-      imgOnBackDrop.alt = galleryData[currentIndex].description;
+      imgOnBackDrop.src = galleryItems[currentIndex].original;
+      imgOnBackDrop.alt = galleryItems[currentIndex].description;
     }
   }
 }
